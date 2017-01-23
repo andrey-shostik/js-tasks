@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <span id="main-text">w3resoure</span>
+    <script type="text/javascript">
+      var text = document.getElementById('main-text').innerHTML,
+        arrayOfText = text.split(''),
+        firstSymbol = arrayOfText.shift(),
+        finalString = arrayOfText.concat(firstSymbol).reverse().join('');
+
+        document.body.innerHTML += ' - ' + finalString;
+    </script>
+  </body>
+</html>
