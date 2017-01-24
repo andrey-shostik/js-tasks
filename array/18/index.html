@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var items = [1, 2, 3, 4, 5, 7, 8, 9];
+
+    function binary_Search(items, value) {
+      for (var i = 0; i < items.length; i++) {
+        if (value == null) {
+          throw 'no value';
+        }
+
+        if (value == items[i]) {
+          return i;
+        } else if (i == items.length -1 ) {
+          return false;
+        }
+      }
+    }
+
+      // Expected Output :
+      console.log(binary_Search(items, 1)); //0
+      console.log(binary_Search(items, 2)); //4
+    </script>
+  </body>
+</html>
