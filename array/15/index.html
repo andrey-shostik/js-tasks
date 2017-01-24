@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var colors = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "],
+        o = ["th","st","nd","rd"];
+
+        for (var i = 0; i < colors.length; i++) {
+          switch (i + 1) {
+            case 1:
+              console.log(i + 1 + o[1] + ' choise is ' + colors[i]);
+              break;
+            case 2:
+              console.log(i + 1 + o[2] + ' choise is ' + colors[i]);
+              break;
+            case 3:
+              console.log(i + 1 + o[3] + ' choise is ' + colors[i]);
+              break;
+            default:
+              console.log(i + 1 + o[0] + ' choise is ' + colors[i]);
+          }
+        }
+
+    </script>
+  </body>
+</html>
