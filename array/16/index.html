@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        var range = 50;
+        var date = new Date(),
+        currentYear = date.getUTCFullYear();
+        for (var i = 0; i < range; i++) {
+          if ((currentYear + i) % 4 === 0 ) {
+            console.log('current ' + (currentYear + i) + ' is leap year ');
+          } else {
+            console.log('current ' + (currentYear + i) + ' is not leap year ');
+          }
+        }
+    </script>
+
+  </body>
+</html>
