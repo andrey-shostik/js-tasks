@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var text = 'The Quick Brown Fox';
+      var newText = [];
+
+      for (var i = 0; i < text.length; i++) {
+        if (text[i].toUpperCase() == text[i]) {
+          newText[i] = text[i].toLowerCase();
+        } else {
+          newText[i] = text[i].toUpperCase();
+        }
+      }
+
+      console.log(newText.join(''));
+    </script>
+  </body>
+</html>
