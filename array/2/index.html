@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function array_Clone(array) {
+        if (!Array.isArray(array)) {
+          return false;
+        }
+        return array.slice(0);
+      }
+      console.log(array_Clone([1, 2, 4, 0]));
+      console.log(array_Clone([1, 2, [4, 0]]));
+    </script>
+  </body>
+</html>
