@@ -1,1 +1,1 @@
-console.log('running');
+require('./main.scss');
