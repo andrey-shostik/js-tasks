@@ -95,6 +95,13 @@ window.onload = function () {
         }
       }
 
+      if (flags === 0 && checkMines()) {
+        setTimeout(function () {
+          alert('you Win');
+          gridInit();
+        }, 100);
+
+      }
       return false;
     };
 
@@ -137,6 +144,26 @@ window.onload = function () {
           }
         }
       }
+    }
+
+    function checkMines() {
+      for (var t = 0; t < mines; t++) {
+        var currentCoord = minesCoord[t].split(',');
+
+        for (var i in grid.children) {
+          if (grid.children.hasOwnProperty(i) && i == currentCoord[0]) {
+            for (var j in grid.children[i].children) {
+              if (grid.children[i].children.hasOwnProperty(j) && j == currentCoord[1]) {
+                if (!grid.children[i].children[j].style.backgroundImage) {
+                  return false;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      return true;
     }
 
     function indexOf(line, value) {
