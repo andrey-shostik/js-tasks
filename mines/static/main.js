@@ -53,6 +53,7 @@ window.onload = function () {
                     grid.children[i].children[j].removeAttribute("style");
                     grid.children[i].children[j].className = 'mine';
                     grid.children[i].children[j].style.background = 'grey';
+                    setCountMinesToCells(grid.children[i].children[j], grid.children[i]);
                   }
                 }
               }
@@ -60,6 +61,32 @@ window.onload = function () {
           } else {
             t--;
           }
+        }
+      }
+    }
+
+    function indexOf(line, value) {
+      return Array.prototype.indexOf.call(line, value);
+    }
+
+    function setCountMinesToCells(cell, line) {
+      var cellNumber = indexOf(line.children, cell);
+
+      setCountMinesInLine(grid.children[indexOf(grid.children, line) - 1], cellNumber);
+      setCountMinesInLine(line, cellNumber);
+      setCountMinesInLine(grid.children[indexOf(grid.children, line) + 1], cellNumber);
+    }
+
+    function setCountMinesInLine(currentLine, cellNumber) {
+      if (currentLine !== undefined) {
+        if (currentLine.children[cellNumber - 1] !== undefined && cellNumber - 1 >= 0 && currentLine.children[cellNumber - 1].className != 'mine') {
+          currentLine.children[cellNumber - 1].innerHTML = Number(currentLine.children[cellNumber - 1].innerHTML) + 1;
+        }
+
+        currentLine.children[cellNumber].innerHTML = Number(currentLine.children[cellNumber].innerHTML) + 1;
+
+        if (currentLine.children[cellNumber + 1] !== undefined && cellNumber + 1 <= 16 && currentLine.children[cellNumber + 1].className != 'mine') {
+          currentLine.children[cellNumber + 1].innerHTML = Number(currentLine.children[cellNumber + 1].innerHTML) + 1;
         }
       }
     }
