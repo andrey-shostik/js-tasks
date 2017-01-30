@@ -105,7 +105,9 @@
 	          alert('BOOM!!! YOU LOSE');
 	          gridInit();
 	        }, 10);
-	      } else if (elem.nodeName == 'TD' && elem.innerHTML === '' && elem.style.backgroundSize != 'cover') {}
+	      } else if (elem.nodeName == 'TD' && elem.innerHTML === '' && elem.style.backgroundSize != 'cover') {
+	        openCells(indexOf(elem.parentElement.children, elem), indexOf(grid.children, elem.parentElement));
+	      }
 	    });
 
 	    var minesCoord = [];
@@ -167,6 +169,20 @@
 	          currentLine.children[cellNumber + 1].innerHTML = Number(currentLine.children[cellNumber + 1].innerHTML) + 1;
 	        }
 	      }
+	    }
+
+	    function openCells(x, y) {
+	      if (x < 0 || x > 15 || y < 0 || y > 15) return false;
+	      line = grid.children[y];
+	      cell = line.children[x];
+	      if (cell.style.background == 'white') return false;
+	      cell.style.background = 'white';
+	      cell.className = "";
+	      setColorToTd(cell);
+	      if (cell.innerHTML > 0) return false;
+
+	      for (var dx = -1; dx < 2; dx++)
+	        for (var dy = -1; dy < 2; dy++) openCells(x + dx, y + dy);
 	    }
 
 	    generate_mines();
