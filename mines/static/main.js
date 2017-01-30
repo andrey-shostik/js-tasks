@@ -68,6 +68,36 @@ window.onload = function () {
       }
     });
 
+    grid.oncontextmenu = function (e) {
+      var elem = e.target;
+
+      if (elem.nodeName == 'TD') {
+        if (elem.className == 'mine' || elem.style.background == 'grey' && flags > 0) {
+          if (elem.className == 'mine' && elem.style.backgroundSize == 'cover') {
+            ++flags;
+            elem.removeAttribute("style");
+
+            cell.className = 'not-opened';
+            if (cheatCheckBox.checked !== true) {
+              elem.style.background = 'grey';
+            } else {
+              elem.style.background = 'red';
+            }
+
+          } else if (flags > 0) {
+            flags--;
+            elem.style.backgroundImage = 'url(http://s8.hostingkartinok.com/uploads/images/2017/01/96ddfade536bcd2c61d695d426cbfb69.png)';
+            elem.style.backgroundSize = 'cover';
+          }
+        } else if (elem.style.backgroundSize == 'cover') {
+          flags++;
+          elem.style.background = 'grey';
+        }
+      }
+
+      return false;
+    };
+
     cheatCheckBox.onchange = function () {
       gridInit();
     };
@@ -150,6 +180,8 @@ window.onload = function () {
     }
 
     generate_mines();
+
+    return grid;
   }
   gridInit();
 };
