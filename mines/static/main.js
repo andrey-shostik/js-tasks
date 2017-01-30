@@ -29,6 +29,15 @@ window.onload = function () {
     grid.setAttribute("border", "1");
     grid.setAttribute("id", "grid");
 
+    grid.addEventListener('click', function (e) {
+      var elem = e.target;
+
+      if (elem.nodeName == 'TD' && elem.style.background == 'grey' && elem.innerHTML !== '' && elem.className != 'mine') {
+        elem.style.background = 'white';
+        elem.className = "";
+
+      } else if (elem.nodeName == 'TD' && elem.innerHTML === '' && elem.style.backgroundSize != 'cover') {}
+    });
 
     var minesCoord = [];
 
