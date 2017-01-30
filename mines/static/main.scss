@@ -1,3 +1,26 @@
 body {
   font-family: 'Raleway', sans-serif;
 }
+
+#game-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mine {
+  background: red;
+  color: rgba(255, 255, 255, 0);
+
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.not-opened {
+  color: rgba(255, 255, 255, 0);
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
