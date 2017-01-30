@@ -36,6 +36,12 @@ window.onload = function () {
         elem.style.background = 'white';
         elem.className = "";
 
+      } else if (elem.className == 'mine' && elem.style.backgroundSize != 'cover') {
+        elem.style.background = 'red';
+        setTimeout(function () {
+          alert('BOOM!!! YOU LOSE');
+          gridInit();
+        }, 10);
       } else if (elem.nodeName == 'TD' && elem.innerHTML === '' && elem.style.backgroundSize != 'cover') {}
     });
 
