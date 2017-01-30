@@ -75,12 +75,29 @@
 	    grid.setAttribute("border", "1");
 	    grid.setAttribute("id", "grid");
 
+	    function setColorToTd(elem) {
+	      if (elem.innerHTML == '1') {
+	        elem.style.color = 'DodgerBlue ';
+	      } else if (elem.innerHTML == '2') {
+	        elem.style.color = 'green';
+	      } else if (elem.innerHTML == '3') {
+	        elem.style.color = 'red';
+	      } else if (elem.innerHTML == '4') {
+	        elem.style.color = 'DarkBlue';
+	      } else if (elem.innerHTML == '5') {
+	        elem.style.color = 'FireBrick';
+	      }
+	      elem.style.fontWeight = '900';
+	    }
+
 	    grid.addEventListener('click', function (e) {
 	      var elem = e.target;
 
 	      if (elem.nodeName == 'TD' && elem.style.background == 'grey' && elem.innerHTML !== '' && elem.className != 'mine') {
 	        elem.style.background = 'white';
 	        elem.className = "";
+
+	        setColorToTd(elem);
 
 	      } else if (elem.className == 'mine' && elem.style.backgroundSize != 'cover') {
 	        elem.style.background = 'red';
