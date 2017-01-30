@@ -2,6 +2,8 @@ require('./main.scss');
 
 window.onload = function () {
   function gridInit() {
+    var cheatCheckBox = document.getElementById('cheat-checkbox');
+
     if (document.getElementById('grid')) {
       document.body.removeChild(document.getElementById('grid'));
     }
@@ -22,7 +24,9 @@ window.onload = function () {
         cell.style.background = 'grey';
         cell.style.fontSize = '22px';
         cell.style.textAlign = 'center';
-        cell.className = 'not-opened';
+        if (cheatCheckBox.checked !== true) {
+          cell.className = 'not-opened';
+        }
         column.appendChild(cell);
       }
     }
@@ -64,6 +68,10 @@ window.onload = function () {
       }
     });
 
+    cheatCheckBox.onchange = function () {
+      gridInit();
+    };
+
     var minesCoord = [];
 
     function generate_mines() {
@@ -86,7 +94,9 @@ window.onload = function () {
                   if (grid.children[i].children.hasOwnProperty(j) && j == randTd) {
                     grid.children[i].children[j].removeAttribute("style");
                     grid.children[i].children[j].className = 'mine';
-                    grid.children[i].children[j].style.background = 'grey';
+                    if (cheatCheckBox.checked !== true) {
+                      grid.children[i].children[j].style.background = 'grey';
+                    }
                     setCountMinesToCells(grid.children[i].children[j], grid.children[i]);
                   }
                 }
