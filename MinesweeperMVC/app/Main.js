@@ -1,1 +1,1 @@
-console.log('FIRST');
+require('./Main.scss');

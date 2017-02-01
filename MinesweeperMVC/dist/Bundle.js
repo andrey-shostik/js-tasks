@@ -42,10 +42,31 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function webpackMissingModule() { throw new Error("Cannot find module \"webpack-dev-server/client?http://localhost:8080/\""); }());
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(2);
+	document.body = ('<input type="text" />');
+
+	var config = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./webpack.config.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
+	var compiler = webpack(config);
+	var server = new WebpackDevServer(compiler, {});
+	server.listen(8080);
+
+
+/***/ },
+/* 2 */
 /***/ function(module, exports) {
 
-	console.log('FIRST');
-
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
