@@ -10,18 +10,26 @@ function sequence(start, step) {
   };
 }
 
-function a1(x) {
+function square(x) {
   return x * x;
 }
 
 function fmap(a, gen) {
-  return function () {
-    return a(gen());
+  return function (b, c) {
+    return a(gen(b, c));
   };
 }
 
-var squareGen = fmap(a1, sequence(1, 3));
+function add(a, b) {
+  return a + b;
+}
+
+var squareGen = fmap(square, sequence(1, 3));
 
 console.log(squareGen());
 console.log(squareGen());
 console.log(squareGen());
+
+var squareAdd = fmap(square, add);
+console.log(squareAdd(2, 3)); // 25 = (2 + 3) ^ 2
+console.log(squareAdd(5, 7)); // 144 = (5 + 7) ^ 2
