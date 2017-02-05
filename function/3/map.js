@@ -1,9 +1,10 @@
  function map(fn, array) {
+  var newArray = [];
    for (var i = 0; i < array.length; i++) {
-     array[i] = square(array[i]);
+     newArray[i] = square(array[i]);
    }
 
-   return array;
+   return newArray;
  }
 
  function square(x) {
