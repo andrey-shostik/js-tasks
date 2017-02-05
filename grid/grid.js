@@ -59,6 +59,7 @@ window.onload = function () {
 
     var paintCellsBtn = document.getElementById('paint-cells');
     paintCellsBtn.addEventListener('click', function () {
+      var cellStyle = grid.children[i].children[j].style;
       if (document.getElementById('grid')) {
         var grid = document.getElementById('grid');
 
@@ -66,7 +67,11 @@ window.onload = function () {
           if (grid.children.hasOwnProperty(i)) {
             for (var j in grid.children[i].children) {
               if (grid.children[i].children.hasOwnProperty(j)) {
-                grid.children[i].children[j].style.background = 'black';
+                if (cellStyle.background == 'black') {
+                  cellStyle.background = 'white';
+                } else if (cellStyle.background == 'white') {
+                  cellStyle.background = 'black'
+                }
               }
             }
           }
