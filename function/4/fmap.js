@@ -20,8 +20,8 @@ function fmap(a, gen) {
   };
 }
 
-var lol = fmap(a1, sequence(1, 3));
+var squareGen = fmap(a1, sequence(1, 3));
 
-console.log(lol());
-console.log(lol());
-console.log(lol());
+console.log(squareGen());
+console.log(squareGen());
+console.log(squareGen());
