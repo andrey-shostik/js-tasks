@@ -60,6 +60,41 @@ MinesweeperView.prototype.createBoard = function (cells) {
   };
 };
 
+MinesweeperView.prototype.syncWithModel = function () {
+  var cell;
+  var tableCell;
+  var cloneGrid;
+  for (var x = 0; x < this.model.size.x; x++) {
+    for (var y = 0; y < this.model.size.y; y++) {
+      cell = this.model.getCell(x, y);
+      if (cell) {
+        tableCell = this.table[x][y];
+
+        if (this.model.isGameOver() && cell.mined) {
+          tableCell.style.background = 'black';
+          tableCell.style.backgroundImage = '';
+        }
+
+        if (cell.state == 'closed') {
+          tableCell.style.background = 'grey';
+          tableCell.innerHTML = '';
+        } else if (cell.state == 'opened') {
+          tableCell.style.background = 'Lavender';
+          if (cell.counter > 0) {
+            tableCell.innerHTML = cell.counter;
+          } else if (cell.mined) {
+            tableCell.style.background = 'red';
+          }
+        } else if (cell.state == 'flagged') {
+          tableCell.style.backgroundImage = 'url(http://s8.hostingkartinok.com/uploads/images/2017/01/96ddfade536bcd2c61d695d426cbfb69.png)';
+          tableCell.style.backgroundSize = 'cover';
+        }
+      }
+    }
+  }
+
+};
+
 
 MinesweeperView.prototype.removeGrids = function () {
   if (document.getElementById('grid')) {

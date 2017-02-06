@@ -8,7 +8,16 @@ MinesweeperController.prototype.setView = function (view) {
   this.view = view;
 };
 
-MinesweeperController.prototype.onLeftClick = function (x, y) {};
+MinesweeperController.prototype.onLeftClick = function (x, y) {
+  this.model.openCell(x, y);
+  this.view.syncWithModel();
+
+  if (this.model.isWin()) {
+    this.view.showWinMessage();
+  } else if (this.model.isGameOver()) {
+    this.view.showGameOverMessage();
+  }
+};
 
 MinesweeperController.prototype.onRightClick = function (x, y) {};
 
