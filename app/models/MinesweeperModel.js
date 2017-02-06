@@ -43,6 +43,36 @@ MinesweeperModel.prototype.startGame = function (mineCount, size) {
   }
 };
 
+MinesweeperModel.prototype.getCell = function (x, y) {
+  if (x >= 0 && y >= 0 && x < this.size.x && y < this.size.y) {
+    return this.cells[x][y];
+  }
+
+  return false;
+};
+
+MinesweeperModel.prototype.isWin = function () {
+  var cell;
+
+  for (var x = 0; x < this.size.x; x++) {
+    for (var y = 0; y < this.size.y; y++) {
+      cell = this.cells[x][y];
+      if (!cell.mined && cell.state != 'opened' && cell.state != 'flagged') {
+        return false;
+      }
+    }
+  }
+
+  return true;
+};
+
+MinesweeperModel.prototype.isGameOver = function () {
+  if (this.gameStatus == 'lose') {
+    return true;
+  }
+  return false;
+};
+
 MinesweeperModel.prototype.generateMines = function () {
   var x;
   var y;
