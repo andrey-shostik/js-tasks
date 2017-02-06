@@ -95,11 +95,21 @@ MinesweeperView.prototype.syncWithModel = function () {
 
 };
 
-
 MinesweeperView.prototype.removeGrids = function () {
   if (document.getElementById('grid')) {
     document.body.removeChild(document.getElementById('grid'));
   }
+};
+
+MinesweeperView.prototype.showWinMessage = function () {
+  alert('You Win');
+  this.removeGrids();
+};
+
+MinesweeperView.prototype.showGameOverMessage = function () {
+  alert('Game Over');
+  document.body.removeChild(document.getElementById('grid'));
+  this.removeGrids();
 };
 
 module.exports = MinesweeperView;
