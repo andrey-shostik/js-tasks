@@ -43,4 +43,21 @@ MinesweeperModel.prototype.startGame = function (mineCount, size) {
   }
 };
 
+MinesweeperModel.prototype.generateMines = function () {
+  var x;
+  var y;
+  var cell;
+  for (var i = 0; i < this.mineCount; i++) {
+    while (true) {
+      x = Math.floor(Math.random() * (this.size.x - 1 - 0 + 1)) + 0;
+      y = Math.floor(Math.random() * (this.size.y - 1 - 0 + 1)) + 0;
+      cell = this.getCell(x, y);
+      if (!cell.state == 'opened' || !cell.mined) {
+        cell.mined = true;
+        break;
+      }
+    }
+  }
+};
+
 module.exports = MinesweeperModel;
