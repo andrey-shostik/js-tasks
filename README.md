@@ -1,1 +1,5 @@
-js tasks
+# Minesweeper MVC
+## Launch
+```
+  npm run webpack-server
+```
