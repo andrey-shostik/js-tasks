@@ -73,6 +73,47 @@ MinesweeperModel.prototype.isGameOver = function () {
   return false;
 };
 
+MinesweeperModel.prototype.openCell = function (x, y) {
+  var cell = this.getCell(x, y);
+
+  if (!cell) {
+    return false;
+  }
+
+  cell.open();
+
+  if (cell.mined && cell.state != 'flagged') {
+    this.gameStatus = 'lose';
+    return;
+  }
+
+  if (this.firstStep == true) {
+    this.firstStep = false;
+    this.generateMines();
+  }
+
+  cell.counter = this.countMinesAroundCell(x, y);
+  if (cell.counter == 0) {
+    var neighbours = this.getCellNeighbours(x, y);
+
+    for (var i = 0; i < neighbours.length; i++) {
+      if (neighbours[i] !== false) {
+        if (neighbours[i].state == 'closed') {
+          this.openCell(neighbours[i].x, neighbours[i].y);
+        }
+      }
+    }
+  }
+};
+
+MinesweeperModel.prototype.nextCellMark = function (x, y) {
+  var cell = this.getCell(x, y);
+
+  if (cell) {
+    cell.nextMark();
+  }
+};
+
 MinesweeperModel.prototype.generateMines = function () {
   var x;
   var y;
