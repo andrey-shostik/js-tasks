@@ -60,4 +60,28 @@ MinesweeperModel.prototype.generateMines = function () {
   }
 };
 
+MinesweeperModel.prototype.countMinesAroundCell = function (x, y) {
+  var neighbours = this.getCellNeighbours(x, y);
+  var sum = 0;
+  for (var i = 0; i < neighbours.length; i++) {
+    if (neighbours[i].mined) {
+      sum += 1;
+    }
+  }
+  return sum;
+};
+
+MinesweeperModel.prototype.getCellNeighbours = function (x, y) {
+  var neighbours = [];
+  for (var i = x - 1; i < x + 2; i++) {
+    neighbours.push(this.getCell(i, y - 1));
+    if (i != x) {
+      neighbours.push(this.getCell(i, y));
+    }
+    neighbours.push(this.getCell(i, y + 1));
+  }
+
+  return neighbours;
+};
+
 module.exports = MinesweeperModel;
