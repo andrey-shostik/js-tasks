@@ -19,7 +19,11 @@ MinesweeperController.prototype.onLeftClick = function (x, y) {
   }
 };
 
-MinesweeperController.prototype.onRightClick = function (x, y) {};
+MinesweeperController.prototype.onRightClick = function (x, y) {
+  this.model.nextCellMark(x, y);
+  this.view.syncWithModel();
+  return false;
+};
 
 MinesweeperController.prototype.onShowBoardClick = function (x, y) {
   this.model.startGame(undefined, { x, y });
