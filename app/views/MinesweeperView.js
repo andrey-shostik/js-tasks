@@ -14,6 +14,45 @@ function MinesweeperView(model, controller, consoleController) {
   this.dashboard();
 }
 
+MinesweeperView.prototype.cloneGrid = function () {
+  if (document.getElementById('grid')) {
+    this.gridClones.push(this.grid.cloneNode(true));
+    this.gridClones[this.gridClones.length - 1].setAttribute('id', 'clone-' + (this.gridClones.length - 1));
+    document.body.appendChild(this.gridClones[this.gridClones.length - 1]);
+  }
+};
+
+MinesweeperView.prototype.dashboard = function () {
+  var that = this;
+  var xInput = document.createElement('input');
+  xInput.setAttribute('type', 'text');
+  xInput.setAttribute('value', '10');
+  document.body.appendChild(xInput);
+
+  var yInput = document.createElement('input');
+  yInput.setAttribute('type', 'text');
+  yInput.setAttribute('value', '10');
+  document.body.appendChild(yInput);
+
+  var startGame = document.createElement('button');
+  startGame.innerHTML = 'startGame';
+  startGame.setAttribute('id', 'start-game');
+  document.body.appendChild(startGame);
+
+  var cloneGrid = document.createElement('button');
+  cloneGrid.innerHTML = 'cloneGrid';
+  cloneGrid.setAttribute('id', 'clone-grid');
+  document.body.appendChild(cloneGrid);
+
+  startGame.addEventListener('click', function () {
+    that.controller.onShowBoardClick(xInput.value, yInput.value);
+  });
+
+  cloneGrid.addEventListener('click', function () {
+    that.cloneGrid();
+  });
+};
+
 MinesweeperView.prototype.createBoard = function (cells) {
   if (!document.getElementById('start-game')) {
     this.dashboard();
@@ -93,11 +132,27 @@ MinesweeperView.prototype.syncWithModel = function () {
     }
   }
 
+  if (this.gridClones.length > 0) {
+    for (var i = 0; i < this.gridClones.length; i++) {
+      cloneGrid = this.grid.cloneNode(true);
+      cloneGrid.setAttribute('id', 'clone-' + i);
+      this.gridClones[i] = cloneGrid;
+      document.body.removeChild(document.getElementById('clone-' + i));
+      document.body.appendChild(this.gridClones[i]);
+    }
+  }
 };
 
 MinesweeperView.prototype.removeGrids = function () {
   if (document.getElementById('grid')) {
     document.body.removeChild(document.getElementById('grid'));
+  }
+
+  if (this.gridClones.length > 0) {
+    for (var i = 0; i < this.gridClones.length; i++) {
+      document.body.removeChild(document.getElementById('clone-' + i));
+    }
+    this.gridClones = [];
   }
 };
 
