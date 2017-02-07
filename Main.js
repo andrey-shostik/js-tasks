@@ -11,7 +11,7 @@ window.onload = function () {
     var c = canvas.getContext('2d');
 
     var container = { x: 0, y: 0, width: canvas.width, height: canvas.height };
-    var elements = [{ x: 400, y: 400, r: 50, color: 'red', vx: 3, vy: 5, name: 'circle' }];
+    var elements = [];
 
     canvas.addEventListener('click', function () {
       var colors = ['Chartreuse', 'Maroon', 'Orange', 'SteelBlue', 'SlateGray', 'SaddleBrown'];
