@@ -9,6 +9,8 @@ module.exports = {
   resolve: {
     modulesDirectories: ['node_modules']
   },
+  devtool: 'source-map',
+  debug: true,
   module: {
     loaders: [
       {
