@@ -8,30 +8,8 @@ import routes from './routes';
 import './index.scss';
 import reducer from './reducers'
 
+const store = createStore(reducer);
 
-function testReducer(state = []) {
-  return [
-    ...state
-  ];
-}
-
-const store = createStore(testReducer);
-// console.log(store);
-
-// store.subscribe(() => {
-//   console.log('subscribe', store.getState());
-// });
-//
-// store.dispatch(
-//   {
-//     type: 'GET_ROOM_PLAYERS',
-//     data: {
-//       'sockets': { 'H5i_ALAr4JtJeMejAAAA': true },
-//       'length': 1
-//     }
-//   }
-// );
-//
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>

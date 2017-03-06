@@ -5,15 +5,18 @@ import './waitingPlayer.scss';
 
 class WaitingPlayer extends Component {
   componentDidMount() {
+    console.log(this.context);
     const socket = SocketIOClient('http://localhost:3000');
     const room = 'game-room';
 
     socket.emit('join', room);
-    console.log(socket);
-    socket.on('game-ready');
+    socket.on('game-ready', () => {
+      this.props.router.push('/preparing')
+    });
   }
 
   render() {
+    console.log(this.context);
     return (
       <div className="waiting-container">
         <Preloader/>
@@ -24,5 +27,9 @@ class WaitingPlayer extends Component {
     );
   }
 }
+
+// WaitingPlayer.contextTypes = {
+//   router: React.PropTypes.object.isRequire
+// };
 
 export default WaitingPlayer;

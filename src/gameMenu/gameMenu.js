@@ -1,33 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import './gameMenu.scss';
-// import WaitingPlayer from '../WaitingPlayer/WaitingPlayer'
+import { getRoomPlayers } from './gameMenu.Action';
 
 class GameMenu extends Component {
-  constructor() {
-    super();
-    this.getLinkPath = this.getLinkPath.bind(this);
-  }
-
   componentDidMount() {
-    fetch('http://localhost:3000/room', { method: 'GET' })
-      .then((res) => {
-        res.json().then((data) => {
-          this.roomPlayers = data.length;
-          console.log(this.roomPlayers, 'DidMount');
+    this.props.onGetRoom();
 
-        });
-      });
-  }
-
-  getLinkPath() {
-    console.log(this.roomPlayers, 'getLinkPath');
-    if (this.roomPlayers != 1) {
-      return '/';
+    console.log(Object.keys(this.props.store.room).length);
+    if (Object.keys(this.props.store.room).length == 1) {
+      this.connectLink = '/waiting';
     } else {
-      return '/waiting';
+      this.connectLink = '/menu';
     }
-    // ref={(c) => { this.connectBtn = c; }}
   }
 
   render() {
@@ -39,7 +25,7 @@ class GameMenu extends Component {
           </li>
 
           <li>
-            <Link to={{ pathname: this.getLinkPath() }} className="game-button">
+            <Link to={{ pathname: this.connectLink }} className="game-button">
               Connect
             </Link>
           </li>
@@ -52,4 +38,20 @@ class GameMenu extends Component {
     );
   }
 }
-export default GameMenu;
+
+export default connect(
+  state => ({
+    store: state
+  }),
+  dispatch => ({
+    onGetRoom: () => {
+      fetch('http://localhost:3000/room', { method: 'GET' })
+      .then((res) => {
+        res.json().then((data) => {
+          const peoples = data.sockets;
+          dispatch(getRoomPlayers(peoples))
+        });
+      });
+    }
+  })
+)(GameMenu);

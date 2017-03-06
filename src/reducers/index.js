@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import room from './room';
+import room from './gameMenu';
+import ship from './ship';
 
 const rootReducer = combineReducers({
-  room
+  room,
+  ship
 });
 
 export default rootReducer;

@@ -4,6 +4,7 @@ const io = require('socket.io')(http);
 const bodyParser = require('body-parser');
 
 app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:7070');
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -33,6 +34,11 @@ io.on('connection', function(socket) {
     });
   })(function () {
     console.log(io.sockets.adapter.rooms['game-room']);
+    if (io.sockets.adapter.rooms['game-room'].length == 2) {
+      socket.broadcast.to('game-room').emit('game-ready');
+      console.log('ready');
+      socket.emit('game-ready');
+    }
   });
 
   socket.on('disconnect', function () {
