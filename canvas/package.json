@@ -1,0 +1,17 @@
+{
+  "name": "minesweeper-mvc",
+  "version": "1.0.0",
+  "description": "Minesweeper MVC",
+  "main": "./app/Main.js",
+  "dependencies": {
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.3",
+    "webpack-reload-plugin": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "webpack-server": "webpack-dev-server --reload=localhost"
+  },
+  "author": "",
+  "license": "ISC"
+}
