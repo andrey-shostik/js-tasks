@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function is_array(array) {
+        return Object.prototype.toString.call(array) === '[object Array]';
+      }
+      console.log(is_array([1, 2, 4, 0]));
+      console.log(is_array('w3resource'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function flatten(array, bool) {
+        var newArray = [];
+
+        if (array == null || array == undefined) {
+          throw 'error, invalid array';
+        }
+
+        if (bool) {
+          return newArray.concat.apply(newArray, array);
+        }
+
+        for (var i = 0; i < array.length; i++) {
+          if (Array.isArray(array[i])) {
+            newArray = newArray.concat(array[i]);
+          } else {
+            newArray[i] = array[i];
+          }
+        }
+
+        return newArray;
+      }
+
+      console.log(flatten([1, [2], [3, [[4]]],[5,6]]));
+      // [1, 2, 3, 4, 5, 6]
+      console.log(flatten([1, [2], [3, [[4]]],[5,6]], true));
+      // [1, 2, 3, [[4]], 5, 6]
+    </script>
+  </body>
+</html>
