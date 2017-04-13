@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="field" name="name" id="input-f">
+    <button type="button" id="add">add</button>
+    <button type="button" id="display">display</button>
+    <div id="container"></div>
+
+    <script type="text/javascript">
+      var input = document.getElementById('input-f'),
+        addButton = document.getElementById('add'),
+        displayButton = document.getElementById('display'),
+        arr = [],
+        div = document.getElementById('container');
+
+      div.style.display = 'none';
+
+      addButton.addEventListener('click', function () {
+        arr.push(input.value);
+        div.innerHTML += 'Element ' + arr.indexOf(input.value) + ' = ' + input.value + '<br>';
+        input.value = '';
+      });
+
+      displayButton.addEventListener('click', function () {
+        div.style.display = 'block';
+      });
+    </script>
+  </body>
+</html>
