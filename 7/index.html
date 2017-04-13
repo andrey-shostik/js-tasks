@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        var startYear = 2014,
+        endYear = 2050;
+
+        for (var i = startYear; i < endYear; i++) {
+          if ((new Date(i, 0, 1)).getDay() === 0) {
+            console.log(' january of ' + i + ' being on Sunday');
+          }
+        }
+    </script>
+  </body>
+</html>

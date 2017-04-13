@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+      body { padding: 5px; }
+      input { margin-bottom: 5px; }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      window.onload = function () {
+        var calculateButtons = document.getElementsByClassName('calculate-buttons')[0],
+          claculateInputs = document.getElementsByClassName('calculate-input'),
+          calculateResults = document.createElement('span'),
+          calculateContainer = document.getElementById('calculate-container');
+
+        calculateContainer.appendChild(calculateResults);
+
+        calculateButtons.addEventListener('click', function (e) {
+            target = e.target;
+
+          if (target.innerHTML == 'Multiply') {
+            calculateResults.innerHTML = claculateInputs[0].value * claculateInputs[1].value;
+          } else if (target.innerHTML == 'Divide') {
+            calculateResults.innerHTML = claculateInputs[0].value / claculateInputs[1].value;
+          }
+        });
+      };
+    </script>
+    <div id='calculate-container'>
+      <form class="form-inline">
+        <div class="form-group">
+          <label>1st Number:</label>
+          <input type="text" class="form-control calculate-input">
+        </div>
+        <div>
+          <label>2st Number:</label>
+          <input type="text" class="form-control calculate-input">
+        </div>
+        <div class="calculate-buttons">
+          <button type="button" class="btn btn-default guess-btn">Multiply</button>
+          <button type="button" class="btn btn-default guess-btn">Divide</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

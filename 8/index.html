@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <script type="text/javascript">
+      window.onload = function () {
+        var guessBtn = document.getElementsByClassName('guess-btn')[0],
+          guessInput = document.getElementsByClassName('guess-input')[0];
+
+        function randomInteger(min, max) {
+          var rand = min + Math.random() * (max - min)
+          rand = Math.round(rand);
+          return rand;
+        }
+
+        guessBtn.addEventListener('click', function () {
+          var randNumber = randomInteger(1, 10),
+            inputValue = guessInput.value;
+
+          console.log(randNumber);
+          console.log(inputValue);
+
+          if (randNumber == inputValue) {
+            alert('Good Work')
+            inputValue = ''
+          } else {
+            alert('Not matched')
+          }
+        });
+      }
+    </script>
+
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="guess-input form-control">
+      </div>
+      <button type="button" class="btn btn-default guess-btn">I'm Lucky</button>
+    </form>
+  </body>
+</html>
