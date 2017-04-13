@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var arr = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3],
+        counter = {},
+        max = 0,
+        min = 0,
+        nameOfMax = '';
+
+      for (var i = 0; i < arr.length; i++) {
+        if (counter[arr[i]] == undefined) {
+          counter[arr[i]] = 1;
+        } else{
+          counter[arr[i]] += 1;
+        }
+        arr[i]
+      }
+
+      for (var i in counter) {
+        if (counter[i] > max) {
+          max = counter[i];
+          nameOfMax = i;
+        } else if (counter[i] < min){
+          min = counter[i];
+        }
+      }
+
+      console.log(nameOfMax + ': ' + max);
+    </script>
+  </body>
+</html>

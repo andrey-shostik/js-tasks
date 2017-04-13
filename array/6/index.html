@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var numbers = '025468';
+      var newNumbers = [numbers[0]];
+
+      for (var i = 1; i < numbers.length; i++)
+        if (numbers[i] % 2 === 0 && (numbers[i - 1]) % 2 === 0) {
+          newNumbers.push('-', numbers[i])
+        } else {
+          newNumbers.push(numbers[i])
+        }
+
+      console.log(newNumbers.join(''));
+    </script>
+  </body>
+</html>
