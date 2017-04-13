@@ -1,0 +1,34 @@
+$text-color: #3252b2;
+
+.app {
+  margin: 0 auto;
+  width: 760px;
+  height: 500px;
+}
+
+#logo {
+  width: 760px;
+  height: 340px;
+  background-size: cover;
+  background-image: url('http://img.apkask.com/2014/12/24221941_83.jpg');
+}
+
+.game-button {
+  margin-top: 40px;
+  border: 5px solid $text-color;
+  color: $text-color;
+  text-decoration: none;
+  font-size: 24px;
+  float: right;
+  width: 180px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+#header {
+  color: $text-color;
+  font-size:  45px;
+  margin-top: 40px;
+  display: inline-block;
+}

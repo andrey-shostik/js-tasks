@@ -1,0 +1,31 @@
+$blue: #3252b2;
+
+table.ship {
+  margin-bottom: 26px;
+  border: 3px solid $blue;
+  border-collapse: separate;
+  border-spacing: 0px 0px; /* Расстояние между ячейками */
+
+  &:first-child {
+    margin-bottom: 25px;
+  }
+
+  &:last-child {
+    margin-top: 25px;
+  }
+
+  tr > td {
+    height: 30px;
+    width: 30px;
+    border-left: 3px solid $blue;
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+
+  }
+}
